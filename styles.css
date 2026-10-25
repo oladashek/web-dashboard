@@ -1,0 +1,339 @@
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Space Grotesk', system-ui, sans-serif;
+  background: #0f0f10;
+  color: #d4d4d8;
+  min-height: 100vh;
+  line-height: 1.5;
+}
+
+.app-header {
+  background: #18181b;
+  border-bottom: 1px solid #27272a;
+  color: #e4e4e7;
+  padding: 1.25rem 1.5rem;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 1rem;
+  justify-content: space-between;
+}
+
+.app-header h1 {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 1.5rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: #e4e4e7;
+}
+
+/* синий акцент-полоска под заголовком */
+.app-header h1::after {
+  content: '';
+  display: block;
+  width: 48px;
+  height: 3px;
+  margin-top: 4px;
+  background: #3b82f6;
+  border-radius: 2px;
+}
+
+.add-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.add-buttons button {
+  background: #27272a;
+  color: #a1a1aa;
+  border: 1px solid #3f3f46;
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  cursor: pointer;
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 0.85rem;
+  font-weight: 500;
+  transition: all 0.2s;
+}
+
+.add-buttons button:hover {
+  background: #3f3f46;
+  border-color: #3b82f6;
+  color: #e4e4e7;
+  transform: translateY(-1px);
+}
+
+.dashboard {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+  gap: 1.25rem;
+  padding: 1.5rem;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.widget {
+  background: #18181b;
+  border: 1px solid #27272a;
+  border-radius: 14px;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.widget:hover {
+  border-color: #3f3f46;
+  box-shadow: 0 0 0 1px #27272a, 0 8px 24px rgba(0, 0, 0, 0.5);
+}
+
+.widget-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.85rem 1rem;
+  background: #1f1f23;
+  border-bottom: 1px solid #27272a;
+}
+
+.widget-header h2 {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 1rem;
+  font-weight: 600;
+  color: #e4e4e7;
+  letter-spacing: -0.01em;
+}
+
+/* синяя вертикальная полоска слева от заголовка карточки */
+.widget-header h2::before {
+  content: '';
+  display: inline-block;
+  width: 3px;
+  height: 14px;
+  margin-right: 8px;
+  background: #3b82f6;
+  border-radius: 2px;
+  vertical-align: middle;
+}
+
+.widget-actions {
+  display: flex;
+  gap: 0.4rem;
+}
+
+.widget-actions button {
+  background: transparent;
+  border: 1px solid #3f3f46;
+  border-radius: 6px;
+  padding: 0.25rem 0.55rem;
+  cursor: pointer;
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 0.72rem;
+  font-weight: 500;
+  color: #a1a1aa;
+  transition: all 0.15s;
+}
+
+.widget-actions button:hover {
+  background: #27272a;
+  border-color: #3b82f6;
+  color: #93c5fd;
+}
+
+.widget-body {
+  padding: 1rem;
+  flex: 1;
+  overflow-y: auto;
+  max-height: 420px;
+}
+
+.widget.collapsed .widget-body {
+  display: none;
+}
+
+/* ToDo */
+.todo-input-row {
+  display: flex;
+  gap: 0.5rem;
+  margin-bottom: 0.75rem;
+}
+
+.todo-input-row input {
+  flex: 1;
+  padding: 0.5rem 0.65rem;
+  background: #0f0f10;
+  border: 1px solid #3f3f46;
+  border-radius: 8px;
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 0.9rem;
+  color: #e4e4e7;
+  outline: none;
+  transition: border-color 0.15s;
+}
+
+.todo-input-row input:focus {
+  border-color: #3b82f6;
+  box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.2);
+}
+
+.todo-input-row input::placeholder {
+  color: #52525b;
+}
+
+.todo-input-row button {
+  padding: 0.5rem 0.9rem;
+  background: #1e3a5f;
+  color: #93c5fd;
+  border: 1px solid #2563eb;
+  border-radius: 8px;
+  cursor: pointer;
+  font-family: 'Space Grotesk', sans-serif;
+  font-weight: 500;
+  font-size: 0.85rem;
+  transition: all 0.15s;
+}
+
+.todo-input-row button:hover {
+  background: #1d4ed8;
+  color: #e4e4e7;
+}
+
+.todo-list {
+  list-style: none;
+}
+
+.todo-list li {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.5rem 0;
+  border-bottom: 1px solid #27272a;
+}
+
+.todo-list li.done span {
+  text-decoration: line-through;
+  color: #52525b;
+}
+
+.todo-list li span {
+  flex: 1;
+  font-size: 0.9rem;
+  color: #d4d4d8;
+}
+
+.todo-list li input[type="checkbox"] {
+  accent-color: #3b82f6;
+  width: 16px;
+  height: 16px;
+  cursor: pointer;
+}
+
+.todo-list li button {
+  background: none;
+  border: none;
+  color: #71717a;
+  cursor: pointer;
+  font-size: 1rem;
+  opacity: 0.8;
+  transition: color 0.15s, opacity 0.15s;
+}
+
+.todo-list li button:hover {
+  color: #ef4444;
+  opacity: 1;
+}
+
+/* Данные */
+.data-row {
+  display: flex;
+  justify-content: space-between;
+  padding: 0.45rem 0;
+  font-size: 0.9rem;
+  border-bottom: 1px solid #27272a;
+}
+
+.data-label {
+  color: #71717a;
+  font-family: 'Space Grotesk', sans-serif;
+}
+
+.data-value {
+  font-family: 'JetBrains Mono', monospace;
+  font-weight: 500;
+  color: #93c5fd;
+  font-size: 0.88rem;
+}
+
+.loading {
+  color: #71717a;
+  font-style: italic;
+  font-size: 0.9rem;
+  font-family: 'Space Grotesk', sans-serif;
+}
+
+.error {
+  color: #f87171;
+  font-size: 0.9rem;
+  font-family: 'Space Grotesk', sans-serif;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.error button {
+  background: #27272a;
+  color: #93c5fd;
+  border: 1px solid #3b82f6;
+  border-radius: 6px;
+  padding: 0.3rem 0.7rem;
+  cursor: pointer;
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 0.8rem;
+  font-weight: 500;
+  transition: background 0.15s;
+}
+
+.error button:hover {
+  background: #3b82f6;
+  color: #fff;
+}
+
+.demo-badge {
+  font-size: 0.7rem;
+  background: #27272a;
+  color: #93c5fd;
+  border: 1px solid #3b82f6;
+  padding: 0.15rem 0.45rem;
+  border-radius: 4px;
+  margin-left: 0.5rem;
+  font-family: 'Space Grotesk', sans-serif;
+  font-weight: 500;
+  vertical-align: middle;
+}
+
+@media (max-width: 600px) {
+  .dashboard {
+    grid-template-columns: 1fr;
+    padding: 1rem;
+  }
+  .app-header {
+    flex-direction: column;
+    align-items: stretch;
+    text-align: center;
+  }
+  .app-header h1::after {
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .add-buttons {
+    justify-content: center;
+  }
+}
